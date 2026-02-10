@@ -15,7 +15,10 @@ const app = express();
 const PORT = 3000;
 const path = require('path'); // <--- 1. Importar path
 
-app.use(cors());
+app.use(cors({
+  origin: true, // Permitir cualquier origen (para esta prueba)
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-datadog-trace-id', 'x-datadog-parent-id', 'x-datadog-origin', 'x-datadog-sampling-priority', 'traceparent', 'tracestate']
+}));
 
 // --- Simulamos una pequeña base de datos ---
 const pageContent = {
