@@ -1,3 +1,13 @@
+// --- INICIO CONFIGURACIÓN DATADOG ---
+const tracer = require('dd-trace').init({
+  service: 'react-test-backend', // El nombre que verás en el panel de Datadog
+  env: 'production',             // Para filtrar entre dev/prod
+  version: '1.0.0',              // Para rastrear despliegues
+  logInjection: true             // (Opcional) Une logs con trazas si usas un logger
+});
+// --- FIN CONFIGURACIÓN DATADOG ---
+
+
 // backend/index.js
 const express = require('express');
 const cors = require('cors');

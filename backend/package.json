@@ -12,6 +12,7 @@
   "type": "commonjs",
   "dependencies": {
     "cors": "^2.8.6",
+    "dd-trace": "^5.85.0",
     "express": "^5.2.1"
   }
 }
