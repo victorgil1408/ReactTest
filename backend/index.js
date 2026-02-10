@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const PORT = 3000;
+const path = require('path'); // <--- 1. Importar path
 
 app.use(cors());
 
@@ -25,7 +26,7 @@ const pageContent = {
     }
 };
 
-// --- Endpoints ---
+// 1.--- Endpoints ---
 app.get('/api/home', (req, res) => {
     console.log(`[${new Date().toISOString()}] Hit en /api/home`);
     res.json(pageContent.home);
@@ -39,6 +40,14 @@ app.get('/api/about', (req, res) => {
 app.get('/api/contact', (req, res) => {
     console.log(`[${new Date().toISOString()}] Hit en /api/contact`);
     res.json(pageContent.contact);
+});
+
+// 2. Servir los archivos estáticos del frontend (la carpeta dist)
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// 3. Manejar cualquier otra ruta devolviendo el index.html (para que funcione React Router)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
