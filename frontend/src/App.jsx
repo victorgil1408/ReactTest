@@ -12,7 +12,7 @@ const PageContent = ({ endpointName }) => {
     setData(null);
 
     // Fetch al backend (Asegúrate que tu backend corre en el puerto 3000)
-    fetch(`http://localhost:3000/api/${endpointName}`)
+    fetch(`/api/${endpointName}`)
       .then(res => res.json())
       .then(result => setData(result))
       .catch(err => console.error("Error conectando al backend:", err));
