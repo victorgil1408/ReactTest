@@ -137,7 +137,7 @@ datadogRum.init({
   defaultPrivacyLevel: 'mask-user-input',  // Masks user input in session replays
 
   // React Router integration
-  plugins: [reactPlugin({ router: true })]
+  plugins: [reactPlugin({ router: false })]
 });
 
 // Enable session replay recording
